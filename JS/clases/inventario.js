@@ -4,9 +4,9 @@ export default class Inventario {
     constructor(){
         this.inicio = null;
     }
-    agregarProducto(Producto,NuevoProducto){
+    agregarProducto(Producto,ProductoNuevo){
         if(this.inicio == null){
-            this.inicio = producto;
+            this.inicio =Producto;
         }else{
             let aux = this.inicio;
             while(aux.siguiente != null){
@@ -24,13 +24,13 @@ export default class Inventario {
                 if(this.inicio != null){
                     this.inicio.anterior = null
                 }
-                return new Producto (aux.codigo,aux.descripcion,aux.costo,aux.siguiente,aux.anterior)
+                return new Producto (aux.codigo,aux.descripcion,aux.precio,aux.siguiente,aux.anterior)
             }else{
                 while(aux.siguiente.codigo != producto.codigo){
                     aux = aux.siguiente
                 }
                 if(aux.siguiente.codigo == producto.codigo){
-                    var F = new Producto(aux.codigo,aux.descripcion,aux.costo,aux.siguiente,aux.anterior)
+                    var F = new Producto(aux.codigo,aux.descripcion,aux.precio,aux.siguiente,aux.anterior)
                 }
                 aux.siguiente = aux.siguiente.siguiente;
                 aux.siguiente.anterior = aux;
@@ -95,7 +95,7 @@ export default class Inventario {
 
     EliminanrPrimero(){
         if(this.inicio != null){
-            let producto = new Producto(aux.codigo,aux.descripcion,aux.costo,aux.siguiente,aux.anterior)
+            let producto = new Producto(aux.codigo,aux.descripcion,aux.precio,aux.siguiente,aux.anterior)
             this.inicio = this.inicio.siguiente;
             try{
                 this.inicio.anterior = null
